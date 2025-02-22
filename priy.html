@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Goal Tracker 🌟</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/priy/pp.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        h1, h3 {
+            text-align: center;
+            color: #ff6f61;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+        h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            animation: slideIn 1.5s ease-in-out;
+        }
+        .task-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .task-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .task-container {
+            flex-grow: 1;
+            height: 20px;
+            margin: 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            position: relative;
+            background-color: #e9ecef;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        .task-label, .percentage {
+            font-weight: bold;
+            width: 80px;
+            text-align: center;
+            color: #555;
+        }
+        .progress {
+            font-weight: bold;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            color: #fff;
+            mix-blend-mode: difference;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #ff6f61;
+            color: white;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        button:hover {
+            background: #ff3b2f;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Proxy Goal Tracker 🌟</h1>
+        <h3>Track Your Progress with Love ❤️</h3>
+
+        <!-- Task Boxes -->
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(0)">-</button>
+            <span class="task-label">🏛️ Temple Visit</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-0"></div>
+                <span class="progress" id="progress-0">0/250</span>
+            </div>
+            <span class="percentage" id="percentage-0">0%</span>
+            <button onclick="increaseProgress(0)">+</button>
+        </div>
+        
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(1)">-</button>
+            <span class="task-label">📚 Read Books</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-1"></div>
+                <span class="progress" id="progress-1">0/10</span>
+            </div>
+            <span class="percentage" id="percentage-1">0%</span>
+            <button onclick="increaseProgress(1)">+</button>
+        </div>
+        
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(2)">-</button>
+            <span class="task-label">💪 Workout</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-2"></div>
+                <span class="progress" id="progress-2">0/200</span>
+            </div>
+            <span class="percentage" id="percentage-2">0%</span>
+            <button onclick="increaseProgress(2)">+</button>
+        </div>
+
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(3)">-</button>
+            <span class="task-label">😴 Sleep Before 11</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-3"></div>
+                <span class="progress" id="progress-3">0/300</span>
+            </div>
+            <span class="percentage" id="percentage-3">0%</span>
+            <button onclick="increaseProgress(3)">+</button>
+        </div>
+
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(4)">-</button>
+            <span class="task-label">👫 Meet New People</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-4"></div>
+                <span class="progress" id="progress-4">0/12</span>
+            </div>
+            <span class="percentage" id="percentage-4">0%</span>
+            <button onclick="increaseProgress(4)">+</button>
+        </div>
+
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(5)">-</button>
+            <span class="task-label">🌍 Visit New Places</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-5"></div>
+                <span class="progress" id="progress-5">0/12</span>
+            </div>
+            <span class="percentage" id="percentage-5">0%</span>
+            <button onclick="increaseProgress(5)">+</button>
+        </div>
+
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(6)">-</button>
+            <span class="task-label">⏳ Spend 1hr for Improvement</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-6"></div>
+                <span class="progress" id="progress-6">0/200</span>
+            </div>
+            <span class="percentage" id="percentage-6">0%</span>
+            <button onclick="increaseProgress(6)">+</button>
+        </div>
+
+        <div class="task-wrapper">
+            <button onclick="decreaseProgress(7)">-</button>
+            <span class="task-label">✋ No Hitting</span>
+            <div class="task-container">
+                <div class="progress-bar" id="progress-bar-7"></div>
+                <span class="progress" id="progress-7">0/300</span>
+            </div>
+            <span class="percentage" id="percentage-7">0%</span>
+            <button onclick="increaseProgress(7)">+</button>
+        </div>
+    </div>
+    
+    <script>
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || Array(8).fill(0);
+        let taskLimits = [250, 10, 200, 300, 12, 12, 200, 300]; // Custom limits for each task
+
+        function updateTaskUI(index) {
+            let progress = tasks[index];
+            let limit = taskLimits[index];
+            let percentage = Math.round((progress / limit) * 100);
+            
+            document.getElementById(`progress-${index}`).innerText = `${progress}/${limit}`;
+            document.getElementById(`percentage-${index}`).innerText = `${percentage}%`;
+            
+            let progressBar = document.getElementById(`progress-bar-${index}`);
+            progressBar.style.width = `${percentage}%`;
+            
+            if (progress === 0) {
+                progressBar.style.backgroundColor = "#e9ecef";
+            } else if (percentage < 20) {
+                progressBar.style.backgroundColor = "#f1c40f";
+            } else if (percentage < 70) {
+                progressBar.style.backgroundColor = "#2ecc71";
+            } else {
+                progressBar.style.backgroundColor = "#e74c3c";
+            }
+        }
+
+        function increaseProgress(index) {
+            if (tasks[index] < taskLimits[index]) {
+                tasks[index]++;
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                updateTaskUI(index);
+            }
+        }
+
+        function decreaseProgress(index) {
+            if (tasks[index] > 0) {
+                tasks[index]--;
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                updateTaskUI(index);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            tasks.forEach((_, index) => updateTaskUI(index));
+        });
+    </script>
+</body>
+</html>
